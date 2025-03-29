@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drone Flight & Recharge Time Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Drone Flight & Recharge Time Calculator</h1>
+        <div class="card">
+            <div class="card-body">
+                <form id="calcForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="voltage">Battery Voltage (V)</label>
+                            <input type="number" step="any" class="form-control" id="voltage" placeholder="e.g., 22.2" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="capacity">Battery Capacity (mAh)</label>
+                            <input type="number" class="form-control" id="capacity" placeholder="e.g., 22000" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="powerDraw">Average Power Draw (W)</label>
+                            <input type="number" step="any" class="form-control" id="powerDraw" placeholder="e.g., 500" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="chargerCurrent">Charger Current (A)</label>
+                            <input type="number" step="any" class="form-control" id="chargerCurrent" placeholder="e.g., 22" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="efficiency">Charging Efficiency Factor</label>
+                        <input type="number" step="any" class="form-control" id="efficiency" placeholder="Default is 1.2" value="1.2" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Calculate Times</button>
+                </form>
+                <div id="results" class="mt-4">
+                    <p class="result text-success" id="flightTimeResult"></p>
+                    <p class="result text-info" id="rechargeTimeResult"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion Section for Formulas & Explanation -->
+        <div id="accordionExample" class="accordion mt-4">
+            <div class="card">
+                <div class="card-header" id="headingFormulas">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFormulas" aria-expanded="false" aria-controls="collapseFormulas">
+                        How It Works: Formulas & Explanation
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFormulas" class="collapse" aria-labelledby="headingFormulas" data-parent="#accordionExample">
+                    <hr>
+                    <div class="card-body">
+                        <h5>Flight Time Calculation</h5>
+                        <p>
+                            <strong>Step 1: Convert Capacity</strong><br>
+                            Convert battery capacity from milliampere-hours (mAh) to ampere-hours (Ah):<br>
+                            <em>Capacity (Ah) = Capacity (mAh) / 1000</em>
+                        </p>
+                        <p>
+                            <strong>Step 2: Calculate Energy</strong><br>
+                            Determine the energy stored in the battery in watt-hours (Wh):<br>
+                            <em>Energy (Wh) = Voltage (V) × Capacity (Ah)</em>
+                        </p>
+                        <p>
+                            <strong>Step 3: Compute Flight Time</strong><br>
+                            Estimate the flight time by dividing the energy by the average power draw (in watts):<br>
+                            <em>Flight Time (hours) = Energy (Wh) / Power Draw (W)</em><br>
+                            Convert the result to minutes by multiplying by 60.
+                        </p>
+                        <hr>
+                        <h5>Recharge Time Calculation</h5>
+                        <p>
+                            <strong>Step 1: Ideal Recharge Time</strong><br>
+                            Calculate the ideal recharge time (in hours) by dividing the battery capacity (Ah) by the charger current (A):<br>
+                            <em>Ideal Recharge Time (hours) = Capacity (Ah) / Charger Current (A)</em>
+                        </p>
+                        <p>
+                            <strong>Step 2: Adjust for Real-World Conditions</strong><br>
+                            Multiply the ideal time by an efficiency factor (typically 1.2) to account for the constant-current and constant-voltage phases, as well as cell balancing:<br>
+                            <em>Recharge Time (hours) = (Capacity (Ah) / Charger Current (A)) × Efficiency Factor</em><br>
+                            Then, convert the result to minutes by multiplying by 60.
+                        </p>
+                        <hr>
+                        <p>
+                            These formulas help you estimate how long your drone can fly based on your battery's energy and how long it will take to recharge using your specified charger parameters.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Accordion Section -->
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">© <span><script>document.write(new Date().getFullYear());</script></span> Drone Flight & Recharge Time Calculator. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  
+</body>
+</html>

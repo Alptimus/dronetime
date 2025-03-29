@@ -1,0 +1,61 @@
+body {
+    background-color: #f8f9fa;
+    padding-top: 25px;
+}
+.card {
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.result {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+/* Accordion Styles */
+.accordion .card-header {
+    background-color: #fff; /* Remove blue background */
+    border-bottom: 1px solid #ddd;
+}
+.accordion .btn-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding-left: 30px;
+}
+/* Add arrow icon */
+.accordion .btn-link::before {
+    content: "\25BA"; /* Unicode for right-pointing arrow */
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s;
+    color: #007bff;
+}
+.accordion .btn-link:not(.collapsed)::before {
+    transform: translateY(-50%) rotate(90deg); /* Rotate arrow when expanded */
+}
+.accordion .card-body {
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.accordion h5 {
+    margin-top: 1rem;
+    color: #007bff;
+}
+.accordion ol {
+    padding-left: 1.5rem;
+}
+.accordion li {
+    margin-bottom: 0.5rem;
+}
+/* Footer Styles */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 25px;
+  }
